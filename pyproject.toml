@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "mfcc-benchmark"
+version = "0.1.0"
+description = ""
+authors = ["Joshua Ferguson <joshua.ferguson.273@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "mfcc_benchmark"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+speechpy = "^2.4"
+sonopy = "^0.1.2"
+speechsauce = {git = "https://github.com/secretsauceai/mfcc-rust.git", subdirectory = "py-speechsauce"}
+soundfile = "^0.11.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
