@@ -3,6 +3,7 @@ from mfcc_bench.util import audio_to_array,get_test_file_path
 from speechpy.feature import mfcc as speechpy_mfcc
 import numpy as np
 import math
+import time
 data_path=Path(__file__).parent.parent / "data"
 
 quick_fox_mp3=get_test_file_path(data_path,"https://upload.wikimedia.org/wikipedia/commons/transcoded/a/a1/Audio_Sample_-_The_Quick_Brown_Fox_Jumps_Over_The_Lazy_Dog.ogg/Audio_Sample_-_The_Quick_Brown_Fox_Jumps_Over_The_Lazy_Dog.ogg.mp3")
@@ -16,7 +17,7 @@ frame_stride = 0.02
 num_filters=40
 fs = 16000
 
-print(len(data)-int(math.ceil((len(data)-fs)/np.round(fs*frame_length))))
+
 
 num_cepstral = 13
 
@@ -29,5 +30,13 @@ speechsauce_call=lambda signal: speechpy_mfcc(signal, sampling_frequency=fs,
                             frame_length=0.020, num_cepstral=num_cepstral, frame_stride=0.01,
                             num_filters=num_filters, fft_length=512, low_frequency=0,
                             high_frequency=None)
+start=time.time()
+pie=speechpy_call(data)
+print(f"speechpy took: {time.time()-start}")
+start=time.time()
+sauce=speechsauce_call(data)
+print(f"speechsauce took: {time.time()-start}")
 
-speechpy_call(data)
+#get the relative difference between the two
+print(np.linalg.norm(pie-sauce))
+print(np.allclose(pie,sauce))
