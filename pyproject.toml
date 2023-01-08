@@ -1,19 +1,20 @@
 [tool.poetry]
 name = "mfcc-benchmark"
 version = "0.1.0"
-description = ""
+description = "comparison of multiple mfcc and mel spectrogram implementations"
 authors = ["Joshua Ferguson <joshua.ferguson.273@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [{include = "mfcc_benchmark"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.7,<=3.10"
 speechpy = "^2.4"
 sonopy = "^0.1.2"
 speechsauce = {git = "https://github.com/secretsauceai/mfcc-rust.git", subdirectory = "py-speechsauce"}
 soundfile = "^0.11.0"
 requests = "^2.28.1"
+librosa = "^0.9.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.10.0"
