@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+speechpy = "*"
+sonopy = "*"
+speechsauce = {git = "https://github.com/secretsauceai/mfcc-rust.git", subdirectory = "py-speechsauce"}
+soundfile = "*"
+requests = "*"
+librosa = "*"
+[dev-packages]
+
+[requires]
+python_version = "3.7"

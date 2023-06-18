@@ -27,5 +27,5 @@ def get_test_file_path(data_dir: Path, url: str) -> Path:
 
 
 def audio_to_array(audio_file_path: Path):
-    data, samplerate = sf.read(str(audio_file_path), always_2d=False)
+    data, samplerate = sf.read(str(audio_file_path),dtype='float32', always_2d=False)
     return data

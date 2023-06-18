@@ -62,11 +62,11 @@ mfcc_functions = {
 }
 
 
-def bench_mfccs(signal: NDArray[np.float64], Warmup=False):
+def bench_mfccs(signal: NDArray[np.float32], Warmup=False):
     results = {}
     for k in mfcc_functions:
         if Warmup:
-            for i in range(10):
+            for _ in range(10):
                 _ = mfcc_functions[k](signal)
         start = time.time()
         _ = mfcc_functions[k](signal)
